@@ -29,23 +29,29 @@ namespace FlappyBird
         {
             SqlConnection sqlCon = new SqlConnection(@"Server=198.37.116.39;Database=FlappyBird;User Id=AndyT_SQLLogin_1;Password=4tq148x3xc;");
             string query = "Select * from [Table] where username = '" + txt_username.Text.Trim() + "' and password = '" + txt_password.Text.Trim() + "'";
-            SqlDataAdapter sqlData = new SqlDataAdapter(query, sqlCon);
-            DataTable dtbl = new DataTable();
+            try
+            {
+                SqlDataAdapter sqlData = new SqlDataAdapter(query, sqlCon);
+                DataTable dtbl = new DataTable();
+
+                sqlData.Fill(dtbl);
+                if (dtbl.Rows.Count == 1)
+                {
+                    var form = new Form1(this);
+                    mydata = new GetData(form.GetValue);
+                    mydata(txt_username.Text, sqlCon);
+                    this.Hide();
+                    form.ShowDialog(); 
+                }
+                else
+                {
+                    MessageBox.Show("username hoặc password không chính xác.");
+                }
+            }catch(Exception)
+            {
+                MessageBox.Show("Kiểm tra kết nối internet.");
+            }
             
-            sqlData.Fill(dtbl);
-            if(dtbl.Rows.Count==1)
-            {
-                var form = new Form1();
-                mydata = new GetData(form.GetValue);
-                mydata(txt_username.Text, sqlCon);
-                form.Show();
-                this.Hide();
-                
-            }
-            else
-            {
-                MessageBox.Show("username hoặc password không chính xác.");
-            }
             
         }
 
@@ -69,7 +75,7 @@ namespace FlappyBird
 
         private void Btn_signUp_Click(object sender, EventArgs e)
         {
-            Signup frm = new Signup();
+            Signup frm = new Signup(this);
             this.Hide();
             frm.ShowDialog();
         }

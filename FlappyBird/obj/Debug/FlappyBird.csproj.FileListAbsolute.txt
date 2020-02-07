@@ -22,3 +22,16 @@ C:\Users\VAN TU\Desktop\game\FlappyBird\FlappyBird\obj\Debug\FlappyBird.exe
 C:\Users\VAN TU\Desktop\game\FlappyBird\FlappyBird\obj\Debug\FlappyBird.pdb
 C:\Users\VAN TU\Desktop\game\FlappyBird\FlappyBird\obj\Debug\FlappyBird.HighScore.resources
 C:\Users\VAN TU\Desktop\game\FlappyBird\FlappyBird\obj\Debug\FlappyBird.Signup.resources
+C:\Users\VAN TU\Desktop\FlappyBird\FlappyBird\obj\Debug\FlappyBird.csprojAssemblyReference.cache
+C:\Users\VAN TU\Desktop\FlappyBird\FlappyBird\obj\Debug\FlappyBird.Form1.resources
+C:\Users\VAN TU\Desktop\FlappyBird\FlappyBird\obj\Debug\FlappyBird.HighScore.resources
+C:\Users\VAN TU\Desktop\FlappyBird\FlappyBird\obj\Debug\FlappyBird.LoginForm.resources
+C:\Users\VAN TU\Desktop\FlappyBird\FlappyBird\obj\Debug\FlappyBird.Properties.Resources.resources
+C:\Users\VAN TU\Desktop\FlappyBird\FlappyBird\obj\Debug\FlappyBird.Signup.resources
+C:\Users\VAN TU\Desktop\FlappyBird\FlappyBird\obj\Debug\FlappyBird.csproj.GenerateResource.cache
+C:\Users\VAN TU\Desktop\FlappyBird\FlappyBird\obj\Debug\FlappyBird.csproj.CoreCompileInputs.cache
+C:\Users\VAN TU\Desktop\FlappyBird\FlappyBird\obj\Debug\FlappyBird.exe
+C:\Users\VAN TU\Desktop\FlappyBird\FlappyBird\obj\Debug\FlappyBird.pdb
+C:\Users\VAN TU\Desktop\FlappyBird\FlappyBird\bin\Debug\FlappyBird.exe.config
+C:\Users\VAN TU\Desktop\FlappyBird\FlappyBird\bin\Debug\FlappyBird.exe
+C:\Users\VAN TU\Desktop\FlappyBird\FlappyBird\bin\Debug\FlappyBird.pdb

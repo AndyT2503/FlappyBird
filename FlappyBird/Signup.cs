@@ -12,10 +12,13 @@ namespace FlappyBird
 {
     public partial class Signup : Form
     {
-        public Signup()
+        public Signup(LoginForm form)
         {
             InitializeComponent();
+            _loginForm = form;
         }
+
+        LoginForm _loginForm;// bien chua gia tri login form
 
         SqlConnection sqlCon = new SqlConnection(@"Server=198.37.116.39;Database=FlappyBird;User Id=AndyT_SQLLogin_1;Password=4tq148x3xc;");
         
@@ -61,9 +64,8 @@ namespace FlappyBird
                 SqlCommand cmd = new SqlCommand(query, sqlCon);
                 cmd.ExecuteNonQuery();
                 sqlCon.Close();
+                _loginForm.Show();
                 this.Close();
-                LoginForm frm = new LoginForm();
-                frm.ShowDialog();
             }
             else
                 MessageBox.Show("Username đã tồn tại hoặc Mật khẩu nhập lại không khớp");
@@ -71,14 +73,20 @@ namespace FlappyBird
 
         private void Exit_Click(object sender, EventArgs e)
         {
-            LoginForm frm = new LoginForm();
+            _loginForm.Show();
             this.Close();
-            frm.ShowDialog();
+            
         }
 
         private void Signup_Load(object sender, EventArgs e)
         {
-            sqlCon.Open();
+            try
+            {
+                sqlCon.Open();
+            }catch(SqlException k)
+            {
+                MessageBox.Show(k.Message);
+            }
         }
     }
 }

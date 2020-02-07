@@ -3,7 +3,8 @@ Phiên bản game Flappy Bird online được lập trình bằng ngôn ngữ C#
 Database của trò chơi sẽ lưu trữ các thông tin về username, passsword và highscore của người chơi. Database được đặt trên hosting Somee.com.
 
 2. Hướng dẫn sử dụng App
+Để tham gia trò chơi máy tình cần có internet để kết nối với database.
 Người sử dụng sẽ cần tạo 1 tài khoản để có thể đăng nhập vào trò chơi. 
 Khi tiến hành đăng kí database sẽ tiến hành kiểm tra thông tin người chơi có hợp lệ hay không (username không được trùng với username đã tạo trước đó).
 Sau khi đăng kí thành công người dùng có thể sử dụng tài khoản đấy để đăng nhập vào trò chơi. 
-Kết thúc mỗi màn chơi hệ thống sẽ lưu lại điểm số cao nhất của người chơi đạt được và xếp hạng với các người chơi khác. Năm người chơi cao điểm nhất sẽ xuất hiện trên bảng highscore.
+Kết thúc mỗi màn chơi hệ thống sẽ lưu lại điểm số cao nhất của người chơi đạt được và xếp hạng với các người chơi khác. Top 5 người chơi cao điểm nhất sẽ xuất hiện trên bảng highscore.

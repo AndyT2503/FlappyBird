@@ -21,11 +21,14 @@ namespace FlappyBird
         int speed = new int();
         int gravity = 2;
         int score = 0;
-        public Form1()
+        public Form1(LoginForm form)
         {
             InitializeComponent();
-
+            loginForm = form;
         }
+
+        LoginForm loginForm;// chua form login
+       
 
         public void GetValue(string name, SqlConnection sql)
         {
@@ -37,20 +40,28 @@ namespace FlappyBird
         {
             int highscore = new int();
             string getscore = "select score from [Table] where username = '" + username + "'";
-            SqlCommand command = new SqlCommand(getscore, sqlCon);
-            SqlDataReader dr = command.ExecuteReader();
-            while (dr.Read())
+            try
             {
-                highscore = Int32.Parse(dr["score"].ToString());
-             
-            }
-            dr.Close();
-            if(score > highscore)
-            {
-                string query = "Update [Table] set score = " + score + " where username = '" + username + "'";
-                SqlCommand cmd = new SqlCommand(query, sqlCon);
+                SqlCommand command = new SqlCommand(getscore, sqlCon);
+                SqlDataReader dr = command.ExecuteReader();
+                while (dr.Read())
+                {
+                    highscore = Int32.Parse(dr["score"].ToString());
 
-                cmd.ExecuteNonQuery();
+                }
+                dr.Close();
+                if (score > highscore)
+                {
+                    string query = "Update [Table] set score = " + score + " where username = '" + username + "'";
+                    SqlCommand cmd = new SqlCommand(query, sqlCon);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }catch(Exception)
+            {
+                if(MessageBox.Show("Kiểm tra kết nối internet")==DialogResult.OK)
+                    this.Close();
+                loginForm.Show();
             }
             
         }
@@ -63,8 +74,16 @@ namespace FlappyBird
         {
             LoginForm frm = new LoginForm();
             frm.mydata = new LoginForm.GetData(GetValue);
-            sqlCon.Open();
             LoadGame();
+            try
+            {
+                sqlCon.Open();
+            }catch(SqlException k)
+            {
+                MessageBox.Show(k.Message);
+                loginForm.ShowDialog();
+                this.Close();
+            }
         }
 
         void EndGame()
@@ -115,15 +134,15 @@ namespace FlappyBird
             if(pipeBotom1.Left<=-30)
             {
                 score++;
-                int h = size.Next(120, 150);
+                int h = size.Next(120, 130);
                 pipeBotom1.Height = h;
                 int t = 306 - h;
-                pipeBotom1.Location = new Point(505, t);
+                pipeBotom1.Location = new Point(490, t);
             }
             if(pipeBotom2.Left <= -30)
             {
                 score++;
-                int h = size.Next(120, 150);
+                int h = size.Next(120, 130);
                 pipeBotom2.Height = h;
                 int t = 306 - h;
                 pipeBotom2.Location = new Point(490, t);
@@ -140,7 +159,7 @@ namespace FlappyBird
                 score++;
                 int h = size.Next(103, 135);
                 pipeTop2.Height = h;
-                pipeTop2.Location = new Point(490, 0);
+                pipeTop2.Location = new Point(505, 0);
             }
 
             CheckEnd();

@@ -31,9 +31,17 @@ namespace FlappyBird
         {
             DataSet ds = new DataSet();
             string cmd = "select top(5) username, score from [table] order by score DESC";
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd, sqlCon);
-            adapter.Fill(ds);
-            dataGridView1.DataSource = ds.Tables[0];
+            try
+            {
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd, sqlCon);
+                adapter.Fill(ds);
+                dataGridView1.DataSource = ds.Tables[0];
+            }catch(Exception)
+            {
+                MessageBox.Show("Không thể kết nối tới database.");
+                this.Close();
+            }
+            
         }
 
         private void Btn_exit_Click(object sender, EventArgs e)
